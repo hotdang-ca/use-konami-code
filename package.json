@@ -1,14 +1,25 @@
 {
-  "author": "James Perih, Four and a Half Giraffes, Ltd.",
+  "author": "James Perih, Four and a Half Giraffes, Ltd. <james@fourandahalfgiraffes.ca>",
   "description": "useKonamiCode React Hook.",
   "devDependencies": {
     "typescript": "^2.7.2"
   },
-  "keywords": [],
+  "keywords": [
+    "konami",
+    "code",
+    "cheat",
+    "cheatcode",
+    "keyboard",
+    "sequence"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "name": "use-konami-code",
   "prepublish": "tsc",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hotdang-ca/use-konami-code.git"
+  },
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
