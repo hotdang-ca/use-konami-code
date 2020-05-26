@@ -1,12 +1,13 @@
-const KONAMICODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'b', 'a', 'Enter'];  
+const KONAMI_CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
-export const useKonamiCode = (onSuccess: () => void, onFail: () => void) => {
+export const useKonamiCode = (onSuccess: () => void, onFail: () => void, altCode?: string[]) => {
     let userInputs: string[] = [];
+    const code: string[] = altCode || KONAMI_CODE;
 
     window.onkeyup = (e: KeyboardEvent) => {
         const { key } = e;
 
-        if (KONAMICODE.indexOf(key) === -1) {
+        if (code.indexOf(key) === -1) {
             if (onFail) {
                 onFail();
             }
@@ -19,7 +20,7 @@ export const useKonamiCode = (onSuccess: () => void, onFail: () => void) => {
         ];
 
         const idx = userInputs.length - 1;
-        if (userInputs[idx] !== KONAMICODE[idx]) {
+        if (userInputs[idx] !== code[idx]) {
             // sequence is broken, reset
             userInputs = [];
 
@@ -30,7 +31,7 @@ export const useKonamiCode = (onSuccess: () => void, onFail: () => void) => {
             return;
         }
 
-        if (JSON.stringify(userInputs) === JSON.stringify(KONAMICODE)) {
+        if (JSON.stringify(userInputs) === JSON.stringify(code)) {
             if (onSuccess) {
                 onSuccess();
             }
